@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cazalu Kombucha - Healthy Fermented Tea Drink</title>
+    <link rel="icon" type="img/jpg" href="download.jpg">
+    <style>
+        /* Base Styles */
+        :root {
+            --primary: #8a4baf; /* Purple theme */
+            --secondary: #f5a623; /* Accent color */
+            --light: #f9f7fc;
+            --dark: #333333;
+            --text: #444444;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--text);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        section {
+            padding: 80px 0;
+        }
+        
+        h1, h2, h3, h4 {
+            color: var(--dark);
+            margin-bottom: 20px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+        }
+        
+        h2 {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        
+        h2:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--primary);
+            margin: 10px auto;
+        }
+        
+        p {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background: #7a3a9f;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: var(--secondary);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 30px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--dark);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('download.jpg') no-repeat center center/cover;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+            margin-top: 70px;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+        
+        /* About Section */
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .about-image img {
+           width:100%;
+           height: auto;
+        
+        }
+        
+        /* Product Info Section */
+        .product-info {
+            background-color: white;
+        }
+        
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .product-card {
+            background: var(--light);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .product-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            transition: transform 0.5s ease;
+        }
+        
+        .product-card:hover .product-image img {
+            transform: scale(1.1);
+        }
+        
+        .product-content {
+            padding: 20px;
+        }
+        
+        /* Nutrition Facts */
+        .nutrition-facts {
+            background: white;
+            border: 2px solid var(--dark);
+            padding: 20px;
+            max-width: 300px;
+            margin: 0 auto;
+        }
+        
+        .nutrition-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            border-bottom: 5px solid var(--dark);
+            padding-bottom: 5px;
+            margin-bottom: 10px;
+        }
+        
+        .nutrition-serving {
+            font-size: 0.9rem;
+            border-bottom: 1px solid var(--dark);
+            padding-bottom: 5px;
+            margin-bottom: 10px;
+        }
+        
+        .nutrition-amount {
+            font-weight: 700;
+        }
+        
+        .nutrition-item {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid #ddd;
+            padding: 5px 0;
+        }
+        
+        .nutrition-item.indent {
+            padding-left: 15px;
+        }
+        
+        .nutrition-footnote {
+            font-size: 0.8rem;
+            margin-top: 10px;
+        }
+        
+        /* Team Section */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .team-member {
+            text-align: center;
+        }
+        
+        .team-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 15px;
+            border: 4px solid var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .team-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* para laging sakto sa bilog */
+            display: block;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 50px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-section h3 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-section ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-section ul li a:hover {
+            color: var(--secondary);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+        
+        /* Responsive Styles */
+        
+        @media (max-width: 768px) {
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            nav ul {
+                position: absolute;
+                top: 70px;
+                right: 0;
+                background: white;
+                width: 200px;
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 20px;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+                display: none;
+            }
+            
+            nav ul.active {
+                display: flex;
+            }
+            
+            nav ul li {
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="#" class="logo">CAZALU <span>KOMBUCHA</span></a>
+            <button class="mobile-menu-btn">☰</button>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#nutrition">Nutrition</a></li>
+                    <li><a href="#team">Our Team</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container hero-content">
+            <h1>Refreshing Kombucha with a Fruity Twist</h1>
+            <p>Experience the perfect blend of fermented tea and real fruit juices. Our Fruity Kombucha offers a modern, refreshing twist that's rich in probiotics and flavor.</p>
+            <a href="#products" class="btn">Explore Our Product</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2>About Cazalu Kombucha</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Kombucha is a fermented, slightly alcoholic beverage made from sweetened tea and a SCOBY (Symbiotic Culture of Bacteria and Yeast). According to the FDA, most people can safely consume up to four ounces of kombucha per day.</p>
+                    <p>Our Fruity Kombucha merges the natural fizz of fermented tea with the bright flavors of real fruit juices. Featuring a blend of cranberry, mixed berries, and grapefruit, it offers a modern, refreshing twist that appeals to Gen Z, millennials, and older health-conscious consumers alike.</p>
+                    <p>Brewed in small batches and sustainably packaged, Fruity Kombucha is a vibrant, probiotic-rich choice for those seeking both flavor and wellness benefits.</p>
+                </div>
+                <div class="about-image">
+                    <img src="two.jpg" alt="Cazalu Kombucha Bottle">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="product-info">
+        <div class="container">
+            <h2>Our Products</h2>
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="one.jpg" alt="Cranberry Kombucha">
+                    </div>
+                    <div class="product-content">
+                        <h3>Cranberry Kombucha</h3>
+                        <p>A tangy and refreshing blend of fermented tea with natural cranberry juice. Perfect for those who enjoy a slightly tart flavor profile.</p>
+                        <p><strong>Price: ₱150.00</strong></p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="four.jpg" alt="Mixed Berries with Grapefruit Kombucha">
+                    </div>
+                    <div class="product-content">
+                        <h3>Mixed Berries with Grapefruit</h3>
+                        <p>A vibrant combination of mixed berries and zesty grapefruit. This flavor offers a perfect balance of sweetness and citrus notes.</p>
+                        <p><strong>Price: ₱153.19</strong></p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1571934811356-5cc061b6821f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Mixed Flavors Kombucha">
+                    </div>
+                    <div class="product-content">
+                        <h3>Mixed Flavors Kombucha</h3>
+                        <p>An assortment of our most popular flavors in one package. Perfect for those who want to try different varieties.</p>
+                        <p><strong>Price: ₱160.00</strong></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Nutrition Facts Section -->
+    <section id="nutrition" class="about">
+        <div class="container">
+            <h2>Nutrition Facts</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Ingredients & Storage</h3>
+                    <p><strong>Ingredients:</strong> Kombucha, honey, cranberry and mixed berries.</p>
+                    <p><strong>Storage instructions:</strong> Keep refrigerated, and once opened, it should be consumed right away. If it's not finished and not stored in the refrigerator, there's a chance it may spoil.</p>
+                    <p><strong>Mfg/Exp:</strong> Sep 2255 / Feb 2526</p>
+                    <p><strong>Mfg/Exp:</strong> Sep 2255 / Sep 2825</p>
+                    
+                    <h3>Eco-Friendly Initiative</h3>
+                    <p>Get <strong>20% off</strong> your next purchase when you return your empty bottle! We're committed to sustainability and reducing waste.</p>
+                </div>
+                <div class="nutrition-facts">
+                    <div class="nutrition-title">Nutrition Facts</div>
+                    <div class="nutrition-serving">Serving Size: 1 bottle (350 mL)<br>Servings Per Container: 1</div>
+                    
+                    <div class="nutrition-item">
+                        <div><strong>Calories</strong></div>
+                        <div class="nutrition-amount">65</div>
+                    </div>
+                    
+                    <div class="nutrition-item">
+                        <div>Total Fat 0g</div>
+                        <div>0%</div>
+                    </div>
+                    
+                    <div class="nutrition-item">
+                        <div>Sodium 5mg</div>
+                        <div>0%</div>
+                    </div>
+                    
+                    <div class="nutrition-item">
+                        <div>Total Carbohydrate 16g</div>
+                        <div>6%</div>
+                    </div>
+                    
+                    <div class="nutrition-item indent">
+                        <div>Sugar 13g</div>
+                        <div></div>
+                    </div>
+                    
+                    <div class="nutrition-item indent">
+                        <div>Includes 7g Added Sugars</div>
+                        <div>14%</div>
+                    </div>
+                    
+                    <div class="nutrition-item">
+                        <div>Protein 0g</div>
+                        <div>0%</div>
+                    </div>
+                    
+                    <div class="nutrition-footnote">*Percent Daily Values are based on a 2,000 calorie diet.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="product-info">
+        <div class="container">
+            <h2>Our Team</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="team-photo"> <img src="zandra.jpg"></div>
+                    <h3>ZANDRA L. BILLIONES</h3>
+                    <p>Leader</p>
+                </div>
+                <div class="team-member">
+                    <div class="team-photo"><img src="boy.jpeg"></div>
+                    <h3>LUIGI D. ADRIATICO</h3>
+                    <p>Member</p>
+                </div>
+                <div class="team-member">
+                    <div class="team-photo"><img src="girl.jpeg"></div>
+                    <h3>CATHLEEN T. AMAR</h3>
+                    <p>Member</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="about">
+        <div class="container">
+            <h2>Find Us</h2>
+            <div class="about-content">
+                <div class="about-text">
+            
+                    
+                    <h3>Follow Us</h3>
+                    <p>Stay connected with Cazalu Kombucha for updates, promotions, and health tips!</p>                    
+                    <div class="social-links">
+                        <a href="#">FB</a>
+                        <a href="#">IG</a>
+                        
+                    </div>
+                </div>
+                <div class="about-image">
+                    <h3>Location</h3>
+                    <p>2ND FLOOR, NLR CENTER, 5040 GEN. T. DE LEON, VALENZUELA, 1442 METRO MANILA</p>
+                    <img src="loc.jpg" alt="Map of Valenzuela Location" 
+                         style="width:100%;height:300px;object-fit:cover;border-radius:10px;">
+                </div>
+                
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>CAZALU KOMBUCHA</h3>
+                    <p>Refreshing kombucha with real fruit juices. Brewed in small batches with sustainability in mind.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#products">Products</a></li>
+                        <li><a href="#nutrition">Nutrition</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <ul>
+                        <li>2nd Floor, NLR Center</li>
+                        <li>5040 Gen. T. De Leon, Valenzuela</li>
+                        <li>1442 Metro Manila</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Cazalu Kombucha. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+            document.querySelector('nav ul').classList.toggle('active');
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                
+                window.scrollTo({
+                    top: targetSection.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+                
+                // Close mobile menu after clicking a link
+                if (window.innerWidth <= 768) {
+                    document.querySelector('nav ul').classList.remove('active');
+                }
+            });
+        });
+        
+        // Add scroll effect to header
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.boxShadow = '0 5px 15px rgba(0,0,0,0.1)';
+            } else {
+                header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+            }
+        });
+    </script>
+</body>
+</html>
