@@ -349,28 +349,64 @@
             color: var(--secondary);
         }
         
+      /* Follow us container */
         .social-links {
             display: flex;
-            gap: 15px;
-        }
-        
-        .social-links a {
-            display: inline-flex;
-            align-items: center;
+            gap: 25px;
+            margin-top: 20px;
+            flex-wrap: wrap;
             justify-content: center;
-            width: 40px;
-            height: 40px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 50%;
-            color: white;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-        
-        .social-links a:hover {
-            background: var(--primary);
-            transform: translateY(-3px);
-        }
+}
+
+
+    .social-links a {
+            display: block;
+            width: 220px;    /* dating 180px – pinalaki para di sayang space */
+            height: 150px;   /* dating 120px – pinalaki rin */
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+            transition: transform 0.3s ease;
+}
+
+    .social-links a:hover {
+            transform: translateY(-4px) scale(1.03);
+}
+
+/* FB/IG images */
+    .social-links img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+}
+
+
+ial-links {
+    display: flex;
+    gap: 30px;               /* pagitan ng mga bilog */
+    margin-top: 20px;
+    flex-wrap: wrap;         /* para mag-wrap kung masikip ang screen */
+    justify-content: center; /* gitna sa maliit na screen */
+}
+
+/* Pantayin ang Follow us at Location heading */
+#contact .about-content {
+    display: flex;
+    justify-content: space-between;  /* hatiin ang space ng dalawang column */
+    align-items: flex-start;         /* pantay sa itaas ang dalawang h3 */
+    gap: 40px;                       /* pagitan ng dalawang column */
+}
+
+/* Para sa maliit na screen (mobile) */
+@media (max-width: 768px) {
+    #contact .about-content {
+        flex-direction: column;      /* stack vertically sa mobile */
+        align-items: center;          /* gitna kapag stacked */
+        gap: 20px;
+    }
+}
+
         
         .copyright {
             text-align: center;
@@ -381,37 +417,136 @@
         }
         
         /* Responsive Styles */
-        
-        @media (max-width: 768px) {
-            .about-content {
-                flex-direction: column;
-            }
-            
-            .mobile-menu-btn {
-                display: block;
-            }
-            
-            nav ul {
-                position: absolute;
-                top: 70px;
-                right: 0;
-                background: white;
-                width: 200px;
-                flex-direction: column;
-                align-items: flex-start;
-                padding: 20px;
-                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-                display: none;
-            }
-            
-            nav ul.active {
-                display: flex;
-            }
-            
-            nav ul li {
-                margin: 10px 0;
-            }
-        }
+   /* ===== Global Reset ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    max-width: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.5;
+}
+
+/* ===== Universal Media Rules ===== */
+img, video, iframe {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* ===== Layout Containers ===== */
+.section {
+    width: 100%;
+    max-width: 1200px;     /* optional max sa malalaking desktop */
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+/* Header */
+header {
+    width: 100%;
+    padding: 20px;
+    background: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+header h1 {
+    font-size: 2rem;
+}
+
+/* Navigation */
+nav ul {
+    display: flex;
+    list-style: none;
+}
+nav ul li {
+    margin-left: 20px;
+}
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 600;
+}
+
+/* ===== Flexible Grids ===== */
+.team-members,
+.product-list,
+.blog-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.team-photo {
+    width: 150px;
+    height: 150px;
+    max-width: 30vw;       /* liliit sa maliit na screen */
+    max-height: 30vw;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto 15px;
+    border: 4px solid var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.team-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* ===== Other sections ===== */
+.about-image img,
+.product-card img,
+.blog-card img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/* ===== Mobile Menu Toggle ===== */
+nav ul.active {
+    display: flex;
+    flex-direction: column;
+    background: white;
+    position: absolute;
+    top: 70px; /* taas ng header */
+    right: 0;
+    width: 100%;
+    text-align: center;
+    padding: 20px 0;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* ===== Media Queries ===== */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 1.5rem;
+    }
+    .section {
+        padding: 20px;
+    }
+    nav ul {
+        display: none; /* default hide sa phone */
+    }
+    nav ul.active {
+        display: flex; /* lalabas pag toggle */
+    }
+    nav ul li {
+        margin: 15px 0;
+    }
+}
+ 
+
     </style>
 </head>
 <body>
@@ -486,7 +621,7 @@
                 </div>
                 <div class="product-card">
                     <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1571934811356-5cc061b6821f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Mixed Flavors Kombucha">
+                        <img src="tree.jpg" alt="Mixed Flavors Kombucha">
                     </div>
                     <div class="product-content">
                         <h3>Mixed Flavors Kombucha</h3>
@@ -501,61 +636,57 @@
     <!-- Nutrition Facts Section -->
     <section id="nutrition" class="about">
         <div class="container">
-            <h2>Nutrition Facts</h2>
+           <h2>Nutrition Facts</h2>
             <div class="about-content">
-                <div class="about-text">
+                 <div class="about-text">
                     <h3>Ingredients & Storage</h3>
                     <p><strong>Ingredients:</strong> Kombucha, honey, cranberry and mixed berries.</p>
                     <p><strong>Storage instructions:</strong> Keep refrigerated, and once opened, it should be consumed right away. If it's not finished and not stored in the refrigerator, there's a chance it may spoil.</p>
-                    <p><strong>Mfg/Exp:</strong> Sep 2255 / Feb 2526</p>
-                    <p><strong>Mfg/Exp:</strong> Sep 2255 / Sep 2825</p>
+                    <p><strong>Mfg/Exp:</strong> Sep 2525 / Feb 2526</p>
+                    <p><strong>Mfg/Exp:</strong> Sep 2525 / Sep 2825</p>
                     
                     <h3>Eco-Friendly Initiative</h3>
                     <p>Get <strong>20% off</strong> your next purchase when you return your empty bottle! We're committed to sustainability and reducing waste.</p>
-                </div>
-                <div class="nutrition-facts">
+                </div><div class="nutrition-facts">
                     <div class="nutrition-title">Nutrition Facts</div>
-                    <div class="nutrition-serving">Serving Size: 1 bottle (350 mL)<br>Servings Per Container: 1</div>
-                    
-                    <div class="nutrition-item">
-                        <div><strong>Calories</strong></div>
-                        <div class="nutrition-amount">65</div>
+                    <div class="nutrition-serving">
+                        Serving Size: 1 bottle (350 mL)<br>
+                        Servings Per Container: 1
                     </div>
-                    
+                
                     <div class="nutrition-item">
-                        <div>Total Fat 0g</div>
+                        <div>0</div>
                         <div>0%</div>
                     </div>
-                    
                     <div class="nutrition-item">
-                        <div>Sodium 5mg</div>
+                        <div>0</div>
                         <div>0%</div>
                     </div>
-                    
                     <div class="nutrition-item">
-                        <div>Total Carbohydrate 16g</div>
-                        <div>6%</div>
-                    </div>
-                    
-                    <div class="nutrition-item indent">
-                        <div>Sugar 13g</div>
-                        <div></div>
-                    </div>
-                    
-                    <div class="nutrition-item indent">
-                        <div>Includes 7g Added Sugars</div>
-                        <div>14%</div>
-                    </div>
-                    
-                    <div class="nutrition-item">
-                        <div>Protein 0g</div>
+                        <div>0</div>
                         <div>0%</div>
                     </div>
-                    
-                    <div class="nutrition-footnote">*Percent Daily Values are based on a 2,000 calorie diet.</div>
+                    <div class="nutrition-item">
+                        <div>0</div>
+                        <div>0%</div>
+                    </div>
+                    <div class="nutrition-item">
+                        <div>0</div>
+                        <div>0%</div>
+                    </div>
+                    <div class="nutrition-item">
+                        <div>0</div>
+                        <div>0%</div>
+                    </div>
+                
+                    <hr style="margin:10px 0;border:1px solid #000;">
+                
+                    <p><strong>Ingredients:</strong> Kombucha, honey,<br>
+                    cranberry and mixed berries.</p>
+                
+                   
                 </div>
-            </div>
-        </div>
+            </div>                
     </section>
 
     <!-- Team Section -->
@@ -590,13 +721,17 @@
                 <div class="about-text">
             
                     
-                    <h3>Follow Us</h3>
-                    <p>Stay connected with Cazalu Kombucha for updates, promotions, and health tips!</p>                    
                     <div class="social-links">
-                        <a href="#">FB</a>
-                        <a href="#">IG</a>
-                        
+                        <h3>Follow us</h3>
+                        <a href="https://www.facebook.com/YourPage" target="_blank">
+                            <img src="fb.jpg" alt="Facebook">
+                        </a>
+                        <a href="https://www.instagram.com/YourPage" target="_blank">
+                            <img src="ig.jpg" alt="Instagram">
+                        </a>
                     </div>
+                    
+                    
                 </div>
                 <div class="about-image">
                     <h3>Location</h3>
